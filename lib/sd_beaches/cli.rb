@@ -10,6 +10,11 @@ class Cli
         
         html = open("https://www.sandiego.org/explore/things-to-do/beaches-bays.aspx")
         doc = Nokogiri::HTML(html)
+        
+        doc.css(".areas-of-interest_gallery").each do |beach|
+        binding.pry 
+      end 
+      
     end 
 
 end 
