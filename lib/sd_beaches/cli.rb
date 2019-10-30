@@ -25,7 +25,7 @@ class Cli
         beaches.each.with_index(1) do |attrication, index|
           puts "#{index}. #{attrication}"
         end 
-      
+  
       end 
 
     end 
