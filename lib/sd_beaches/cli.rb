@@ -13,7 +13,7 @@ class Cli
         puts "-----------------------------------------------------------------------------"
         puts " "
         Scraper.scrape_beaches
-        
+         binding.pry
         
       #add in loop to ask user question
       
