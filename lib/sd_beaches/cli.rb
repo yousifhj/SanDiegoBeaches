@@ -16,15 +16,15 @@ class Cli
     
   #add in loop to ask user question
         menu
-        print_beaches 
+        print_beaches
         end 
     
       def menu
       end 
       
-      def print beaches     
-        Beaches.all.each.with_index(1) do |attrication, index|
-          puts "#{index}. #{attrication}"
+      def print_beaches     
+        Beach.all.each.with_index(1) do |beach, index|
+          puts "#{index}. #{beach.name}"
         end 
       end 
   

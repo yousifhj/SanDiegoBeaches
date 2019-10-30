@@ -1,10 +1,10 @@
 class Beach
   
-    attr_accessor :popular_activites, :what_to_love, :what_to_know, :attraction, :url
+    attr_accessor :name, :url, :what_to_love, :what_to_know
     
     @@all = []
     
-    def initialize 
+    def initialize
       @@all << self
     end 
     
