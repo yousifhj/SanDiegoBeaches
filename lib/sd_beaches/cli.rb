@@ -5,7 +5,6 @@ class Cli
       responce
     end 
     
-    
      def run
         puts "Welcome to San Diego's Beaches and Bays"
         puts "70 Miles of Glorious Coastline Signature is San Diego's Signature Attraction "
