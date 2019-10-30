@@ -12,18 +12,25 @@ class Cli
         puts " "
         puts "-----------------------------------------------------------------------------"
         puts " "
+        Scraper.scrape_beaches
         
-        html = open("https://www.sandiego.org/explore/things-to-do/beaches-bays.aspx")
-        doc = Nokogiri::HTML(html)
-        beaches = []
-        doc.css(".areas-of-interest__gallery-entry").each do |beach|
-            attrication = beach.css(".areas-of-interest__text").text.strip.split(/(?<!\s)(?=[A-Z])/)
-            beaches << attrication 
-        end 
-            
-        beaches.each.with_index(1) do |attrication, index|
+        
+      #add in loop to ask user question
+      
+        menu
+        print_beaches
+        
+    end 
+    
+      def menu
+        
+      end 
+      
+      def print beaches     
+        Beaches.all.each.with_index(1) do |attrication, index|
           puts "#{index}. #{attrication}"
         end 
+      end 
   
       end 
 
