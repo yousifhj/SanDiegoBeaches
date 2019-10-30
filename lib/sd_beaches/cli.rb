@@ -6,7 +6,7 @@ class Cli
     end 
     
     
-    def run
+     def run
         puts "Welcome to San Diego's Beaches and Bays"
         puts "70 Miles of Glorious Coastline Signature is San Diego's Signature Attraction "
         puts "These are the top beaches in San Diego"
@@ -16,17 +16,20 @@ class Cli
         
         html = open("https://www.sandiego.org/explore/things-to-do/beaches-bays.aspx")
         doc = Nokogiri::HTML(html)
-        
-        doc.css(".areas-of-interest__text").each do |beach|
-          beach.css
-          
-          beach = index + 1 
-          
-          string.split(/(?<!\s)(?=[A-Z])/)
-        binding.pry 
+        beaches = []
+        doc.css(".areas-of-interest__gallery-entry").each do |beach|
+            attrication = beach.css(".areas-of-interest__text").text.strip.split(/(?<!\s)(?=[A-Z])/)
+            beaches << attrication 
+            
+            beaches.each.with_index(1) do |attrication, index|
+              puts "#{index}. #{attrication}"
+            end 
       end 
-      
+
     end 
 
-end 
+  end 
+
+
+ 
 
