@@ -13,18 +13,13 @@ class Cli
         puts "-----------------------------------------------------------------------------"
         puts " "
         Scraper.scrape_beaches
-         binding.pry
-        
-      #add in loop to ask user question
-      
-        #menu
-        binding.pry
-        print_beaches
-        
-    end 
+    
+  #add in loop to ask user question
+        menu
+        print_beaches 
+        end 
     
       def menu
-        
       end 
       
       def print beaches     
@@ -33,12 +28,5 @@ class Cli
         end 
       end 
   
-      end 
-
- 
-
-
-
-
- 
+    end 
 

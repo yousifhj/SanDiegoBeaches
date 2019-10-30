@@ -4,12 +4,11 @@ class Scraper
   def self.scrape_beaches
     html = open("https://www.sandiego.org/explore/things-to-do/beaches-bays.aspx")
     doc = Nokogiri::HTML(html)
-    doc.css(".areas-of-interest__gallery-entry").each do |a|
+    doc.css(".areas-of-interest__gallery-entry").each do |b|
       beach = Beach.new
-      beach.attraction = a.css(".areas-of-interest__text").text.strip
-      #binding.pry
-      beach.url = a.css("b").attribute("href").value
-
+      beach.attraction = b.css(".areas-of-interest__text").text.strip
+     # binding.pry
+      beach.url = b.attribute("href").value
     end 
   end 
   
