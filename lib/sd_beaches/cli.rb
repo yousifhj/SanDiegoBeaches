@@ -17,7 +17,8 @@ class Cli
         
       #add in loop to ask user question
       
-        menu
+        #menu
+        binding.pry
         print_beaches
         
     end 
@@ -34,7 +35,7 @@ class Cli
   
       end 
 
-    end 
+ 
 
 
 
