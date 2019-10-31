@@ -16,20 +16,17 @@ class Scraper
   def self.scrape_beach_deatils(beach)
     html = open(beach.url)
     doc = Nokogiri::HTML(html)
-    #binding.pry
-    beach.what_to_love = doc.css("div.attributes__info")[0].text 
-    beach.what_to_know = doc.css("div.attributes__info")[1].text 
-    
-    
-  
-  
-  # container.each do |link|
-  #   if link.include?("What to Love")
-       
-   end 
+    beaches = {}
+    binding.pry
+     beach.container = doc.css("div.attributes__info").each 
+      beach.container.each do |link|
+        if link.include?("What to Love")
+        beach[:what_to_love] = link
+      elsif link.include?("What to Know")
+        beach[:what_to_know] = link
+      end 
+    end
+  end 
+ end 
    
-  end   
-  
-
-
 
