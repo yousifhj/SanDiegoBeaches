@@ -6,6 +6,7 @@ class Cli
     end 
     
      def run
+        puts "-----------------------------------------------------------------------------"
         puts "Welcome to San Diego's Beaches and Bays"
         puts "70 Miles of Glorious Coastline Signature is San Diego's Signature Attraction "
         puts "These are the top beaches in San Diego"
@@ -13,11 +14,15 @@ class Cli
         puts "-----------------------------------------------------------------------------"
         puts " "
         Scraper.scrape_beaches
-    
-  #add in loop to ask user question
-        menu
         print_beaches
+        puts " "
+        puts "Select the number of the beach you want to see further details or type 'exit' to exit"
+        input = gets.strip.downcase
+        while input != 'exit' do 
+          beach = Beach.all[input.to_i - 1]
+          Scraper.scrape_beach_deatils(beach)
         end 
+      end 
     
       def menu
       end 
