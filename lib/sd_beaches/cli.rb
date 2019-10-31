@@ -21,6 +21,7 @@ class Cli
         while input != 'exit' do 
           beach = Beach.all[input.to_i - 1]
           Scraper.scrape_beach_deatils(beach)
+          binding.pry
         end 
       end 
     

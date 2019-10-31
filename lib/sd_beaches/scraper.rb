@@ -14,15 +14,22 @@ class Scraper
   end 
   
   def self.scrape_beach_deatils(beach)
-   html = open("https://www.sandiego.org/explore/things-to-do/beaches-bays.aspx")
-   doc = Nokogiri::HTML(html)
-   container = doc.css(".areas-of-interest__gallery-entry").attribute("href").value
-   container.each do |link|
-     if link.include?("What to Love")
+    html = open(beach.url)
+    doc = Nokogiri::HTML(html)
+    #binding.pry
+    beach.what_to_love = doc.css("div.attributes__info")[0].text 
+    beach.what_to_know = doc.css("div.attributes__info")[1].text 
+    
+    
+  
+  
+  # container.each do |link|
+  #   if link.include?("What to Love")
        
    end 
    
   end   
   
-end 
+
+
 
