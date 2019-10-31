@@ -19,7 +19,6 @@ class Scraper
     beaches = {}
  
      container = doc.css("attributes__info")
-        #binding.pry
         
         beach.description = doc.css(".text-block p")[0].text
         
