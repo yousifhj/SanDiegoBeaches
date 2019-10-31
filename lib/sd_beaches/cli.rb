@@ -1,11 +1,9 @@
 class Cli
     
-    def run 
-      welcome
-      responce
-    end 
+
     
-     def run
+
+    def run
         puts "-----------------------------------------------------------------------------"
         puts "Welcome to San Diego's Beaches and Bays"
         puts "70 Miles of Glorious Coastline Signature is San Diego's Signature Attraction "
@@ -21,11 +19,19 @@ class Cli
         while input != 'exit' do 
           beach = Beach.all[input.to_i - 1]
           Scraper.scrape_beach_deatils(beach)
-          binding.pry
+          print_beach(beach)
+          puts " "
+          puts "Would you like to see another beach?"
+          puts "If so, select the number of the beach you want to see further details or type 'exit' to exit"
+          input = gets.strip.downcase
         end 
+        puts "Hope to see you soon!"
       end 
     
-      def menu
+      def print_beach(beach)
+        puts "#{beach.name}"
+        puts "#{beach.what_to_love}"
+        puts "#{beach.what_to_know}"
       end 
       
       def print_beaches     
