@@ -54,7 +54,7 @@ class Cli
       end 
 
     
-      
+ 
     def print_beach_details(beach)
       puts " "
       puts "#{beach.name}"
@@ -62,20 +62,25 @@ class Cli
       puts " "
       puts " What to Love: "
       puts " "
-      puts "#{beach.what_to_love}"
+      puts "#{print_what_to_love(beach)}"
       puts " "
       puts "-----------------------------------------------------------------------------"
       puts " "
       puts "What to Know:"
       puts " "
-      puts "#{beach.what_to_know}"
+      puts "#{print_what_to_know(beach)}"
     end 
       
-      # def print_what 
-      #   beach.what_to_know.gsub!(/[^0-9A-Za-z]/, '')
-      # end 
+     
+      def print_what_to_love(beach)
+         beach.what_to_know.join(", ")
+      end 
       
-      def print_beaches     
+      def print_what_to_know(beach)
+         beach.what_to_know.join(", ")
+      end 
+      
+      def print_beaches    
         Beach.all.each.with_index(1) do |beach, index|
           puts "#{index}. #{beach.name}"
         end 
