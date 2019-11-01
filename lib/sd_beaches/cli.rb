@@ -6,7 +6,6 @@ class Cli
     puts " "
     puts "Welcome to San Diego's Beaches and Bays"
     puts "70 Miles of Glorious Coastline Signature is San Diego's Signature Attraction "
-    puts "These are the top beaches in San Diego"
     puts " "
     puts "-----------------------------------------------------------------------------"
 
@@ -18,7 +17,7 @@ class Cli
     puts " "
     puts "-----------------------------------------------------------------------------"
     puts " "
-    puts "Enter the number of the beach you want to read more about or type 'exit'."
+    puts "To find your perfect beach please enter the number of the beach you would like to read more about."
     puts " "
     puts "-----------------------------------------------------------------------------"
         
@@ -29,7 +28,7 @@ class Cli
           print_beaches
             puts "-----------------------------------------------------------------------------"
             puts " "
-            puts "Enter the number of the beach you want to read more about or type 'exit'."
+            puts "Please enter the number of the beach you want to read more about or type 'exit'."
             puts " "
             puts "-----------------------------------------------------------------------------"
             
@@ -39,15 +38,19 @@ class Cli
           Scraper.scrape_beach_deatils(beach) 
           print_beach_details(beach)
           puts " "
-          puts "Type list if you would you like to see the list of?"
-          puts "If so, select the number of the beach you want to see further details or type 'exit' to exit"
+          puts "Type list if you would you like to see the list of beaches again."
+          puts "To learn about a different beach please select a different beach or type 'exit' to exit"
           input = gets.strip.downcase
         elsif input.to_i <=0 || input.to_i >= Beach.all.length
           puts "Invalid entry, please try again."
           input=gets.strip.downcase
         end 
         end 
+        puts "-----------------------------------------------------------------------------"
+        puts " "
         puts "Hope to see you soon!"
+        puts " "
+        puts "-----------------------------------------------------------------------------"
       end 
 
     
