@@ -80,5 +80,6 @@ class Cli
           puts "#{index}. #{beach.name}"
         end 
       end 
-    end 
 
+
+end 
