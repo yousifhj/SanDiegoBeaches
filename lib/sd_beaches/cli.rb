@@ -25,7 +25,7 @@ class Cli
     input = gets.strip.downcase
     
       while input != 'exit' do 
-        if input == 'list'
+        if input === 'list'
           print_beaches
             puts "-----------------------------------------------------------------------------"
             puts " "
@@ -37,32 +37,36 @@ class Cli
           beach = Beach.all[input.to_i - 1]
           Scraper.scrape_beach_deatils(beach)
           print_beach_details(beach)
-          
         end 
-          
- 
-          
           puts " "
-          puts "Would you like to see another beach?"
+          puts "Type list if you would you like to see the list of?"
           puts "If so, select the number of the beach you want to see further details or type 'exit' to exit"
           input = gets.strip.downcase
         end 
         puts "Hope to see you soon!"
       end 
+
     
-    
+      
     def print_beach_details(beach)
       puts " "
       puts "#{beach.name}"
       puts "---------------------"
+      puts " "
       puts " What to Love: "
       puts " "
       puts "#{beach.what_to_love}"
+      puts " "
       puts "-----------------------------------------------------------------------------"
+      puts " "
       puts "What to Know:"
       puts " "
       puts "#{beach.what_to_know}"
     end 
+      
+      # def print_what 
+      #   beach.what_to_know.gsub!(/[^0-9A-Za-z]/, '')
+      # end 
       
       def print_beaches     
         Beach.all.each.with_index(1) do |beach, index|
@@ -71,4 +75,3 @@ class Cli
       end 
     end 
 
-  
