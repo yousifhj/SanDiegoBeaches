@@ -40,11 +40,12 @@ class Cli
           puts " "
           puts "Type list if you would you like to see the list of beaches again."
           puts "To learn about a different beach please select a different beach or type 'exit' to exit"
+          
           input = gets.strip.downcase
         elsif input.to_i <=0 || input.to_i >= Beach.all.length
           puts "Invalid entry, please try again."
           input=gets.strip.downcase
-        end 
+          end 
         end 
         puts "-----------------------------------------------------------------------------"
         puts " "
@@ -83,6 +84,7 @@ class Cli
       def print_beaches    
         Beach.all.each.with_index(1) do |beach, index|
           puts "#{index}. #{beach.name}"
+          sleep (0.20)
         end 
       end 
 
