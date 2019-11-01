@@ -6,37 +6,34 @@ class Scraper
     
     doc = Nokogiri::HTML(html)
    
-      doc.css(".areas-of-interest__gallery-entry").each do |b|
+    doc.css(".areas-of-interest__gallery-entry").each do |b|
         
-        beach = Beach.new
+    beach = Beach.new
         
-        #binding.pry
+    beach.name = b.css(".areas-of-interest__text").text.strip
         
-        beach.name = b.css(".areas-of-interest__text").text.strip
+    beach.url = b.attribute("href").value
         
-        beach.url = b.attribute("href").value
-        
-      end 
-    
   end 
+    
+end 
   
   def self.scrape_beach_deatils(beach)
     
     html = open(beach.url)
     
     doc = Nokogiri::HTML(html)
-    
-    beaches = {}
  
-     container = doc.css("attributes__info")
+    container = doc.css("attributes__info")
         
-        beach.description = doc.css(".text-block p")[0].text
+    beach.description = doc.css(".text-block p")[0].text
         
-        beach.what_to_love = doc.css("div.attributes__list")[0].css("li").collect { |li| li.text}
+    beach.what_to_love = doc.css("div.attributes__list")[0].css("li").collect { |li| li.text}
 
-        beach.what_to_know = doc.css("div.attributes__list")[1].css("li").collect { |li| li.text}
-    end
-  end 
+    beach.what_to_know = doc.css("div.attributes__list")[1].css("li").collect { |li| li.text}
+  end
+  
+end 
 
    
 
