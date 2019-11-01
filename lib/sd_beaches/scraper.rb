@@ -6,9 +6,9 @@ class Scraper
    
       doc.css(".areas-of-interest__gallery-entry").each do |b|
         beach = Beach.new
+        #binding.pry
         beach.name = b.css(".areas-of-interest__text").text.strip
         beach.url = b.attribute("href").value
-        #binding.pry
       end 
     
   end 

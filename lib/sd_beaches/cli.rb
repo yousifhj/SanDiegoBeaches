@@ -4,21 +4,13 @@ class Cli
   
   def run 
     greeting
-    first_question
     Scraper.scrape_beaches
+    list_beaches
+    choose_beach
+    binding.pry 
+    # call
   end 
-    
-  def call 
-    user_input = menu      
-    if user_input == "exit" || user_input == "n"
-      goodbye
-      return
-    else 
-      print_beaches
-      choose_beach
-    end 
-  end 
-
+  
   def greeting
     puts "-----------------------------------------------------------------------------"
     puts "Welcome to San Diego's Beaches and Bays"
@@ -26,33 +18,61 @@ class Cli
     puts "These are the top beaches in San Diego"
     puts "-----------------------------------------------------------------------------"
   end 
-    
-  def first_question
-    puts "Would you like to see the top beaches in San Diego  (y/n)?"
-      
-    reply = gets.chomp 
-      
-    case reply
-    when "y"
-      print_beaches
-    when "n"
-      puts "We hope to see you soon!"
-    return
-  end
   
-    
-    def print_beaches     
+    def list_beaches   
       Beach.all.each.with_index(1) do |beach, index|
       puts "#{index}. #{beach.name}"
       end 
-    end 
+    end
+
       
     def choose_beach
-      puts "Select the beach you want to learn more about."
-      index = gets.strip.to_i - 1 
-      beach = Beach.all[index]
+      puts "What beach would you want to learn more about?"
+        input = gets.strip
+        beach = Beach.all[input.to_i - 1]
+      # if input_valid?(index)
+      #   self.description(beach)
+      #   puts "Type 'list' to see list again, or type 'exit'"
+      #   elsif index == "list"
+      #   list_beach
+      #   elsif index == "exit"
+      #   goodbye
+      #   return
+      #   elsif !input_valid?(index)
+      #   error
+      #   list_beach
+      #   choose_beach
+       # end
     end 
        
+       
+  # def first_question
+  #   puts "Would you like to see the top beaches in San Diego  (y/n)?"
+      
+  #   reply = gets.chomp 
+  
+  #   case reply
+  #   when "y"
+  #   list_beaches
+  #   choose_beach
+  #   when "n"
+  #     puts "We hope to see you soon!"
+  #   return
+  # end
+  
+    # def call 
+  #   loop do 
+  #     user_input = menu      
+  #     if user_input == "exit" || user_input == "n"
+  #     goodbye
+  #       return
+  #     else 
+  #       list_beaches
+  #       choose_beach
+  #     end 
+  #   end 
+  # end 
+     
     def menu
       input = gets.strip.downcase
       return input 
@@ -76,8 +96,8 @@ class Cli
       puts "Hope to see you soon!"
     end 
   end 
-end
 end 
+
 
    # if input_valid?(index)
         # self.description(beach)
