@@ -24,7 +24,7 @@ class Cli
         
     input = gets.strip.downcase
     
-      while input != 'exit' do 
+      while input != 'exit' do
         if input === 'list'
           print_beaches
             puts "-----------------------------------------------------------------------------"
@@ -32,16 +32,20 @@ class Cli
             puts "Enter the number of the beach you want to read more about or type 'exit'."
             puts " "
             puts "-----------------------------------------------------------------------------"
+            
             input = gets.strip.downcase
         elsif input.to_i.between?(1, Beach.all.length)
           beach = Beach.all[input.to_i - 1]
-          Scraper.scrape_beach_deatils(beach)
+          Scraper.scrape_beach_deatils(beach) 
           print_beach_details(beach)
-        end 
           puts " "
           puts "Type list if you would you like to see the list of?"
           puts "If so, select the number of the beach you want to see further details or type 'exit' to exit"
           input = gets.strip.downcase
+        elsif input.to_i <=0 || input.to_i >= Beach.all.length
+          puts "Invalid entry, please try again."
+          input=gets.strip.downcase
+        end 
         end 
         puts "Hope to see you soon!"
       end 
