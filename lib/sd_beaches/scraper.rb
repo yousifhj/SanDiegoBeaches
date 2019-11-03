@@ -18,7 +18,7 @@ class Scraper
     
 end 
   
-  def self.scrape_beach_deatils(beach)
+  def self.scrape_beach_details(beach)
     
     html = open(beach.url)
     

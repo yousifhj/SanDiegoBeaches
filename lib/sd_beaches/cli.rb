@@ -1,7 +1,7 @@
 class Cli
   
   def run
-    
+    sleep(0.5)
     puts "-----------------------------------------------------------------------------"
     puts " "
     puts "Welcome to San Diego's Beaches and Bays"
@@ -11,7 +11,6 @@ class Cli
 
 
     Scraper.scrape_beaches
-    sleep (0.5)
     print_beaches
     sleep (0.5)
     puts " "
@@ -35,7 +34,7 @@ class Cli
             input = gets.strip.downcase
         elsif input.to_i.between?(1, Beach.all.length)
           beach = Beach.all[input.to_i - 1]
-          Scraper.scrape_beach_deatils(beach) 
+          Scraper.scrape_beach_details(beach) 
           print_beach_details(beach)
           puts " "
           puts "Type list if you would you like to see the list of beaches again."
@@ -70,6 +69,9 @@ class Cli
       puts "What to Know:"
       puts " "
       puts "#{print_what_to_know(beach)}"
+      puts " "
+      puts "-----------------------------------------------------------------------------"
+      puts " "
     end 
       
      
