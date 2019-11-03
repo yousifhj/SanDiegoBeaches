@@ -27,7 +27,7 @@ end
     container = doc.css("attributes__info")
         
     beach.description = doc.css(".text-block p")[0].text
-        
+    #binding.pry     
     beach.what_to_love = doc.css("div.attributes__list")[0].css("li").collect { |li| li.text}
 
     beach.what_to_know = doc.css("div.attributes__list")[1].css("li").collect { |li| li.text}

@@ -34,6 +34,7 @@ class Cli
             input = gets.strip.downcase
         elsif input.to_i.between?(1, Beach.all.length)
           beach = Beach.all[input.to_i - 1]
+         # binding.pry
           Scraper.scrape_beach_details(beach) 
           print_beach_details(beach)
           puts " "
@@ -41,7 +42,7 @@ class Cli
           puts "To learn about a different beach please select a different beach or type 'exit' to exit"
           
           input = gets.strip.downcase
-        elsif input.to_i <=0 || input.to_i >= Beach.all.length
+        elsif input.to_i <= 0 || input.to_i >= Beach.all.length
           puts "Invalid entry, please try again."
           input=gets.strip.downcase
           end 
@@ -52,9 +53,7 @@ class Cli
         puts " "
         puts "-----------------------------------------------------------------------------"
       end 
-
-    
- 
+      
     def print_beach_details(beach)
       puts " "
       puts "#{beach.name}"
@@ -73,10 +72,9 @@ class Cli
       puts "-----------------------------------------------------------------------------"
       puts " "
     end 
-      
-     
+    binding.pry
       def print_what_to_love(beach)
-         beach.what_to_know.join(", ")
+         beach.what_to_love.join(", ")
       end 
       
       def print_what_to_know(beach)
