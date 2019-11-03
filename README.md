@@ -4,11 +4,11 @@ WELCOME!!
 
 This CLI scrapes San Diego's Beaches and Bays webpage and What to Love and well as What to know about each beach. It returns the asked informaiton to the user via the terminal. 
 
-##Prerequsites:
+## Prerequsites:
 
 open-uri and nokogiri
 
-##Clone this project from Github repositsory 
+## Clone this project from Github repositsory 
 
 1. git clone git@github.com:yousifhj/SanDiegoBeaches.git
 
