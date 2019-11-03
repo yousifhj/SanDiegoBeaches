@@ -21,45 +21,40 @@ class Cli
     puts "-----------------------------------------------------------------------------"
         
     input = gets.strip.downcase
-    
-      while input != 'exit' do
-        if input === 'list'
-          print_beaches
-            puts "-----------------------------------------------------------------------------"
-            puts " "
-            puts "Please enter the number of the beach you want to read more about or type 'exit'."
-            puts " "
-            puts "-----------------------------------------------------------------------------"
-            
-            input = gets.strip.downcase
-        elsif input.to_i.between?(1, Beach.all.length)
-          beach = Beach.all[input.to_i - 1]
-         # binding.pry
-          Scraper.scrape_beach_details(beach) 
-          print_beach_details(beach)
+    while input != 'exit' do
+      if input === 'list'
+        print_beaches
+          puts "-----------------------------------------------------------------------------"
           puts " "
-          puts "Type list if you would you like to see the list of beaches again."
-          puts "To learn about a different beach please select a different beach or type 'exit' to exit"
-          
-          input = gets.strip.downcase
-        elsif input.to_i <= 0 || input.to_i >= Beach.all.length
-          puts "Invalid entry, please try again."
-          input=gets.strip.downcase
-          end 
+          puts "Please enter the number of the beach you want to read more about or type 'exit'."
+          puts " "
+          puts "-----------------------------------------------------------------------------"
+      elsif input.to_i.between?(1, Beach.all.length)
+        beach = Beach.all[input.to_i - 1]
+        Scraper.scrape_beach_details(beach) 
+        print_beach_details(beach)
+        puts " "
+        puts "Type list if you would you like to see the list of beaches again."
+        puts "To learn about a different beach please select a different beach or type 'exit' to exit"
+        input = gets.strip.downcase
+      elsif input.to_i <= 0 || input.to_i >= Beach.all.length
+        puts "Invalid entry, please try again."
+        input=gets.strip.downcase
         end 
-        puts "-----------------------------------------------------------------------------"
-        puts " "
-        puts "Hope to see you soon!"
-        puts " "
-        puts "-----------------------------------------------------------------------------"
       end 
+      puts "-----------------------------------------------------------------------------"
+      puts " "
+      puts "Hope to see you soon!"
+      puts " "
+      puts "-----------------------------------------------------------------------------"
+    end 
       
     def print_beach_details(beach)
       puts " "
       puts "#{beach.name}"
       puts "---------------------"
       puts " "
-      puts " What to Love: "
+      puts "What to Love: "
       puts " "
       puts "#{print_what_to_love(beach)}"
       puts " "
@@ -72,21 +67,21 @@ class Cli
       puts "-----------------------------------------------------------------------------"
       puts " "
     end 
-    binding.pry
-      def print_what_to_love(beach)
-         beach.what_to_love.join(", ")
+   
+    def print_what_to_love(beach)
+       beach.what_to_love.join(", ").delete(",")
+    end 
+    
+    def print_what_to_know(beach)
+       beach.what_to_know.join(", ").delete(",")
+    end 
+    
+    def print_beaches    
+      Beach.all.each.with_index(1) do |beach, index|
+        puts "#{index}. #{beach.name}"
+        sleep (0.20)
       end 
-      
-      def print_what_to_know(beach)
-         beach.what_to_know.join(", ")
-      end 
-      
-      def print_beaches    
-        Beach.all.each.with_index(1) do |beach, index|
-          puts "#{index}. #{beach.name}"
-          sleep (0.20)
-        end 
-      end 
+    end 
 
 
 end 
