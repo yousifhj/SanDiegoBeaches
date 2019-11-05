@@ -1,5 +1,6 @@
 class Scraper
 
+  #1st class scraper 
   def self.scrape_beaches
     
     html = open("https://www.sandiego.org/explore/things-to-do/beaches-bays.aspx")
@@ -8,16 +9,17 @@ class Scraper
    
     doc.css(".areas-of-interest__gallery-entry").each do |b|
         
-    beach = Beach.new
+      beach = Beach.new
         
-    beach.name = b.css(".areas-of-interest__text").text.strip
+      beach.name = b.css(".areas-of-interest__text").text.strip
         
-    beach.url = b.attribute("href").value
+      beach.url = b.attribute("href").value
         
-  end 
+    end 
     
-end 
-  
+  end 
+   
+  #2nd class scraper 
   def self.scrape_beach_details(beach)
     
     html = open(beach.url)

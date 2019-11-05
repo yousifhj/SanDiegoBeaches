@@ -29,6 +29,7 @@ class Cli
           puts "Please enter the number of the beach you want to read more about or type 'exit'."
           puts " "
           puts "-----------------------------------------------------------------------------"
+          input=gets.strip.downcase
       elsif input.to_i.between?(1, Beach.all.length)
         beach = Beach.all[input.to_i - 1]
         Scraper.scrape_beach_details(beach) 

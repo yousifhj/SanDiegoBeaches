@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+
+#calls the require relative file
 require_relative "../lib/environment"
 
 Cli.new.run
