@@ -1,25 +1,26 @@
 class Scraper
 
-  #1st class scraper 
+  #Method 1 scrapes and makes all beach objects  know their own title and url
   def self.scrape_beaches
     
     html = open("https://www.sandiego.org/explore/things-to-do/beaches-bays.aspx")
     
-    doc = Nokogiri::HTML(html)
+    doc = Nokogiri::HTML(html) 
    
     doc.css(".areas-of-interest__gallery-entry").each do |b|
+    
+    beach = Beach.new 
         
-      beach = Beach.new
+    beach.name = b.css(".areas-of-interest__text").text.strip 
         
-      beach.name = b.css(".areas-of-interest__text").text.strip
-        
-      beach.url = b.attribute("href").value
-        
-    end 
+    beach.url = b.attribute("href").value
+
+    end
     
   end 
    
-  #2nd class scraper 
+  #Method 2 is if the user whats to see details on a specific beach.
+  #   whats to know and whats to love
   def self.scrape_beach_details(beach)
     
     html = open(beach.url)
